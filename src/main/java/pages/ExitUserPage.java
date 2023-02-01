@@ -13,6 +13,4 @@ public class ExitUserPage {
     public void buttonExit() {
         buttonExit.click();
     }
-
-
 }
