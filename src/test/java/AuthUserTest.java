@@ -10,7 +10,7 @@ import service.UserApiService;
 import static com.codeborne.selenide.Selenide.open;
 import static constants.LinkConstants.*;
 
-public class AuthUserTest extends BeforeTest {
+public class AuthUserTest  {
     RegisterPage registerPage;
     GeneratorUserService generateUser;
     UserApiService userService;

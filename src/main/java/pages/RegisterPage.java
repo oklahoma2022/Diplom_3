@@ -15,6 +15,8 @@ public class RegisterPage {
     private final SelenideElement inputPassword = $(byXpath("//label[text()='Пароль']/following-sibling::input"));
     private final SelenideElement buttonRegistration = $(byXpath("//button[text()='Зарегистрироваться']"));
     private final SelenideElement messageNotCorrectPassword = $(byXpath("//p[text()='Некорректный пароль']"));
+    private final SelenideElement getTextAuthPage = $(byXpath("//h2[text()='Вход']"));
+
 
     public void inputName(String username) {
         inputName.setValue(username);
@@ -31,6 +33,12 @@ public class RegisterPage {
     public String getErrorMessagePassword() {
         return messageNotCorrectPassword.getText();
     }
+
+    //После регистрации мы попадаем на страницу регистрации. проверим по тексту что присуствует форма  входа.
+    public String getTextAuthPage() {
+        return getTextAuthPage.getText();
+    }
+
     public void registration(UserModel user){
         inputName(user.getName());
         inputEmail(user.getEmail());

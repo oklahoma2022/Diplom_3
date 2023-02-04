@@ -1,6 +1,7 @@
 
 import models.UserModel;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import pages.AuthPage;
@@ -13,7 +14,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static constants.LinkConstants.AUTH_USER_URL;
 import static constants.LinkConstants.REGISTER_URL;
 
-public class LogOutAccountTest extends BeforeTest {
+public class LogOutAccountTest {
     RegisterPage registerPage;
     AuthPage authPage;
     GeneratorUserService generateUser;
@@ -46,6 +47,7 @@ public class LogOutAccountTest extends BeforeTest {
         headerPage.buttonPersonalAccount();
         //Кликаем кнопку выход
         exitUserPage.buttonExit();
+        Assert.assertEquals("Вход", registerPage.getTextAuthPage());
     }
 
     @After

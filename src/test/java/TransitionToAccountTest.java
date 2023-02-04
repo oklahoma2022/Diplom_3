@@ -1,5 +1,6 @@
 import models.UserModel;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import pages.AuthPage;
@@ -11,7 +12,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static constants.LinkConstants.AUTH_USER_URL;
 import static constants.LinkConstants.REGISTER_URL;
 
-public class DesingerToAccountTest extends BeforeTest {
+public class TransitionToAccountTest {
     RegisterPage registerPage;
     AuthPage authPage;
     GeneratorUserService generateUser;
@@ -19,7 +20,7 @@ public class DesingerToAccountTest extends BeforeTest {
     UserModel user;
     HeaderPage personalAccountPage;
 
-    public DesingerToAccountTest() {
+    public TransitionToAccountTest() {
         generateUser = new GeneratorUserService();
         userService = new UserApiService();
         user = generateUser.getRandomUser();
@@ -40,6 +41,7 @@ public class DesingerToAccountTest extends BeforeTest {
         authPage.authUser(user);
         //Переходим в личный кабинет
         personalAccountPage.buttonPersonalAccount();
+        Assert.assertEquals("В этом разделе вы можете изменить свои персональные данные" ,personalAccountPage.getTextProfile());
     }
 
     @After

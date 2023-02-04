@@ -9,7 +9,7 @@ import service.UserApiService;
 import static constants.LinkConstants.REGISTER_URL;
 import static com.codeborne.selenide.Selenide.*;
 
-public class RegisterUserTest extends BeforeTest {
+public class RegisterUserTest{
     GeneratorUserService generateUser;
     UserApiService userService;
     UserModel user;
@@ -26,6 +26,7 @@ public class RegisterUserTest extends BeforeTest {
         open(REGISTER_URL);
         RegisterPage registerPage = new RegisterPage();
         registerPage.registration(user);
+        Assert.assertEquals("Вход", registerPage.getTextAuthPage());
     }
 
     @Test

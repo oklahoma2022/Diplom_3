@@ -1,5 +1,6 @@
 import models.UserModel;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import pages.AuthPage;
@@ -10,7 +11,7 @@ import service.UserApiService;
 import static com.codeborne.selenide.Selenide.open;
 import static constants.LinkConstants.*;
 
-public class DesingerToConstructorTest extends BeforeTest {
+public class TransitionToConstructorTest {
     RegisterPage registerPage;
     AuthPage authPage;
     GeneratorUserService generateUser;
@@ -18,7 +19,7 @@ public class DesingerToConstructorTest extends BeforeTest {
     UserModel user;
     HeaderPage headerPage;
 
-    public DesingerToConstructorTest() {
+    public TransitionToConstructorTest() {
         generateUser = new GeneratorUserService();
         userService = new UserApiService();
         user = generateUser.getRandomUser();
@@ -41,6 +42,8 @@ public class DesingerToConstructorTest extends BeforeTest {
         headerPage.buttonPersonalAccount();
         //Кликаем на кнопку «Конструктор»
         headerPage.buttonConstructor();
+        //Проверяем что открылся конструктор и на странице есть заголовок "Соберите бургер"
+        Assert.assertEquals("Соберите бургер", headerPage.getTextConstructorPage());
     }
 
     @Test
@@ -57,6 +60,8 @@ public class DesingerToConstructorTest extends BeforeTest {
         headerPage.buttonPersonalAccount();
         //Кликаем на логотип «Stellar Burgers»
         headerPage.buttonLogo();
+        //Проверяем что открылся конструктор и на странице есть заголовок "Соберите бургер"
+        Assert.assertEquals("Соберите бургер", headerPage.getTextConstructorPage());
     }
 
     @After

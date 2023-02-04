@@ -5,7 +5,7 @@ import pages.ConstructorPage;
 import static com.codeborne.selenide.Selenide.open;
 import static constants.LinkConstants.MAIN_PAGE_URL;
 
-public class ConstructorTest extends BeforeTest {
+public class ConstructorTest {
     ConstructorPage constructorPage;
 
     public ConstructorTest() {
@@ -20,7 +20,8 @@ public class ConstructorTest extends BeforeTest {
         constructorPage.buttonFilling();
         //Проверяем что клик на булочки работает т.к по дефолту они выбраны и не нажимаются
         constructorPage.buttonBun();
-        Assert.assertEquals("Булки", constructorPage.textBun());
+        //Проверяем наличие подстроки current в классе, который устанавливается при переходе
+        Assert.assertTrue(constructorPage.getAttributeClassBun().contains("current"));
     }
 
     @Test
@@ -28,7 +29,7 @@ public class ConstructorTest extends BeforeTest {
     public void openingSouse() {
         open(MAIN_PAGE_URL);
         constructorPage.buttonSouse();
-        Assert.assertEquals("Соусы", constructorPage.textSouse());
+        Assert.assertTrue(constructorPage.getAttributeClassSouse().contains("current"));
     }
 
     @Test
@@ -36,6 +37,6 @@ public class ConstructorTest extends BeforeTest {
     public void openingFilling() {
         open(MAIN_PAGE_URL);
         constructorPage.buttonFilling();
-        Assert.assertEquals("Начинки", constructorPage.textFilling());
+        Assert.assertTrue(constructorPage.getAttributeClassFilling().contains("current"));
     }
 }
